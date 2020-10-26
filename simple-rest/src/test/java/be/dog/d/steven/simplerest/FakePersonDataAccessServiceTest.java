@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FakePersonDataAccessServiceTest {
 
-    private final FakePersonDataAccessService underTest = new FakePersonDataAccessService();
+    private final FakePersonDataAccessService testService = new FakePersonDataAccessService();
 
     @Test
     public void canPerformCrud() {
@@ -24,21 +24,21 @@ public class FakePersonDataAccessServiceTest {
         Person personTwo = new Person(idTwo, "Joeri Peters");
 
         // When James and Anna added to db
-        underTest.insertPerson(idOne, personOne);
-        underTest.insertPerson(idTwo, personTwo);
+        testService.insertPerson(idOne, personOne);
+        testService.insertPerson(idTwo, personTwo);
 
         // Then can retrieve James by id
-        assertThat(underTest.selectPersonById(idOne))
+        assertThat(testService.selectPersonById(idOne))
                 .isPresent()
                 .hasValueSatisfying(personFromDb -> assertThat(personFromDb).isEqualToComparingFieldByField(personOne));
 
         // ...And also Anna by id
-        assertThat(underTest.selectPersonById(idTwo))
+        assertThat(testService.selectPersonById(idTwo))
                 .isPresent()
                 .hasValueSatisfying(personFromDb -> assertThat(personFromDb).isEqualToComparingFieldByField(personTwo));
 
         // When get all people
-        List<Person> people = underTest.selectAllPeople();
+        List<Person> people = testService.selectAllPeople();
 
         // ...List should have size 2 and should have both James and Anna
         assertThat(people)
@@ -50,21 +50,21 @@ public class FakePersonDataAccessServiceTest {
         Person personUpdate = new Person(idOne, "John Doe");
 
         // When Update
-        assertThat(underTest.updatePersonById(idOne, personUpdate)).isEqualTo(1);
+        assertThat(testService.updatePersonById(idOne, personUpdate)).isEqualTo(1);
 
         // Then when get person with idOne then should have name as James Bond > Jake Black
-        assertThat(underTest.selectPersonById(idOne))
+        assertThat(testService.selectPersonById(idOne))
                 .isPresent()
                 .hasValueSatisfying(personFromDb -> assertThat(personFromDb).isEqualToComparingFieldByField(personUpdate));
 
         // When Delete Jake Black
-        assertThat(underTest.deletePersonById(idOne)).isEqualTo(1);
+        assertThat(testService.deletePersonById(idOne)).isEqualTo(1);
 
         // When get personOne should be empty
-        assertThat(underTest.selectPersonById(idOne)).isEmpty();
+        assertThat(testService.selectPersonById(idOne)).isEmpty();
 
         // Finally DB should only contain only Anna Smith
-        assertThat(underTest.selectAllPeople())
+        assertThat(testService.selectAllPeople())
                 .hasSize(1)
                 .usingFieldByFieldElementComparator()
                 .containsExactlyInAnyOrder(personTwo);
@@ -76,7 +76,7 @@ public class FakePersonDataAccessServiceTest {
         UUID id = UUID.randomUUID();
 
         // When
-        int deleteResult = underTest.deletePersonById(id);
+        int deleteResult = testService.deletePersonById(id);
 
         // Then
         assertThat(deleteResult).isEqualTo(0);
@@ -89,7 +89,7 @@ public class FakePersonDataAccessServiceTest {
         Person person = new Person(id, "James Not In Db");
 
         // When
-        int deleteResult = underTest.updatePersonById(id, person);
+        int deleteResult = testService.updatePersonById(id, person);
 
         // Then
         assertThat(deleteResult).isEqualTo(0);
