@@ -2,7 +2,6 @@ package be.dog.d.steven.simplerest;
 
 import be.dog.d.steven.simplerest.dao.FakePersonDataAccessService;
 import be.dog.d.steven.simplerest.model.Person;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,12 +10,8 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FakePersonDataAccessServiceTest {
-    private FakePersonDataAccessService underTest;
 
-    @Before
-    public void setUp() {
-        underTest = new FakePersonDataAccessService();
-    }
+    private final FakePersonDataAccessService underTest = new FakePersonDataAccessService();
 
     @Test
     public void canPerformCrud() {
