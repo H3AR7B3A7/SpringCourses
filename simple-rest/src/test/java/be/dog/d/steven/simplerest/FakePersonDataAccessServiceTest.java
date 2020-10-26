@@ -86,7 +86,7 @@ public class FakePersonDataAccessServiceTest {
     public void willReturn0IfNoPersonFoundToUpdate() {
         // Given
         UUID id = UUID.randomUUID();
-        Person person = new Person(id, "James Not In Db");
+        Person person = new Person(id, "Not In DB");
 
         // When
         int deleteResult = testService.updatePersonById(id, person);
