@@ -17,7 +17,7 @@ public class PersonService {
 
     private final PersonDao personDao;
 
-    public int addPerson(Person person){
+    public UUID addPerson(Person person){
         return personDao.insertPerson(person);
     }
 
