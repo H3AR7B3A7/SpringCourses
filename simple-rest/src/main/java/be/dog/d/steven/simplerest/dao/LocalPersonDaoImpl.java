@@ -1,6 +1,7 @@
 package be.dog.d.steven.simplerest.dao;
 
 import be.dog.d.steven.simplerest.model.Person;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-//@Primary // Annotate RemotePersonDaoImpl with Primary to switch between Repositories
+@Primary // Annotate RemotePersonDaoImpl with Primary to switch between Repositories
 @Repository
 public class LocalPersonDaoImpl implements PersonDao{
 
