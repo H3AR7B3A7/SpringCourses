@@ -24,7 +24,7 @@ public class RemotePersonDaoImpl implements PersonDao {
         UUID uuid = UUID.randomUUID();
         jdbcTemplate.update("INSERT INTO Person (id, name) VALUES (?,?)",
                 uuid, person.getName());
-        return id;
+        return uuid;
     }
 
     @Override
