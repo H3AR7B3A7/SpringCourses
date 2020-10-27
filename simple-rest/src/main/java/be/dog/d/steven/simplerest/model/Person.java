@@ -1,20 +1,29 @@
 package be.dog.d.steven.simplerest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table
 public class Person {
 
+    @Id
+    @GeneratedValue
     @JsonProperty("id")
-    private final UUID id;
+    private UUID id;
 
     @JsonProperty("name")
     @NotBlank
-    private final String name;
+    private String name;
 
     public UUID getId() {
         return id;
