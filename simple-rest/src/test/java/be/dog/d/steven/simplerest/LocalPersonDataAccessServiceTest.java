@@ -1,6 +1,6 @@
 package be.dog.d.steven.simplerest;
 
-import be.dog.d.steven.simplerest.dao.LocalPersonDataAccessService;
+import be.dog.d.steven.simplerest.dao.LocalPersonDaoImpl;
 import be.dog.d.steven.simplerest.model.Person;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LocalPersonDataAccessServiceTest {
 
-    private final LocalPersonDataAccessService testService = new LocalPersonDataAccessService();
+    private final LocalPersonDaoImpl testService = new LocalPersonDaoImpl();
 
     @Test
     public void canPerformCrud() {

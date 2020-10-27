@@ -9,7 +9,7 @@ import java.util.UUID;
 
 //@Primary
 @Repository
-public class RemotePersonDataAccessService implements PersonDao {
+public class RemotePersonDaoImpl implements PersonDao {
 
     @Override
     public UUID insertPerson(UUID id, Person person) {

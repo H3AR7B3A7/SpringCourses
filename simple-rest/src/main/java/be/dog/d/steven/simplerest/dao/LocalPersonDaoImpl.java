@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Primary
 @Repository
-public class LocalPersonDataAccessService implements PersonDao{
+public class LocalPersonDaoImpl implements PersonDao{
 
     private final static List<Person> DB = new ArrayList<>();
 
