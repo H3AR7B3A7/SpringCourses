@@ -13,7 +13,17 @@
         <label for="toggle" id="label">Change to Dark Mode</label>
     </div>
     <h1>
-        Hello world!
+        People in list:
     </h1>
+    <table>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+        </tr>
+        <tr th:each="person : ${all}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+        </tr>
+    </table>
 </body>
 </html>

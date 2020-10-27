@@ -41,3 +41,20 @@ label {
 input {
     visibility: hidden;
 }
+
+h1 {
+    padding: 1rem;
+}
+
+table {
+    border: 1px solid;
+    border-radius: 6px;
+    table-layout: fixed;
+    width: 80%;
+}
+
+th, td {
+    border: 1px solid;
+    width: 50%;
+    overflow: hidden;
+}
