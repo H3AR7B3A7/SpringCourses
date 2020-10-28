@@ -1,4 +1,5 @@
 rootProject.name = 'spring-course'
 include 'base-module'
 include 'simple-rest'
+include 'multiple-db'
 
