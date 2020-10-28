@@ -37,7 +37,7 @@ public class DataSourceConfiguration {
                 .build();
     }
 
-    @Bean(name="tm1")
+    @Bean(name="transactionManager")
     @Autowired
     @Primary
     DataSourceTransactionManager tm1(@Qualifier("datasource1") DataSource datasource) {
