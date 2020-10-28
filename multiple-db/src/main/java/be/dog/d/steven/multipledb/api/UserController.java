@@ -35,9 +35,9 @@ public class UserController {
                 .orElse(null); // Could throw an actual exception here, just returning null for simplicity
     }
 
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "/{id}")
     public void deleteUserById(@PathVariable("id") int id){
-        userService.getUserById(id);
+        userService.deleteUser(id);
     }
 
 }

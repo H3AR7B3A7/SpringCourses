@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
 
 import javax.sql.DataSource;
 
@@ -41,7 +41,7 @@ public class DataSourceConfiguration {
     @Bean
     @Autowired
     @Primary
-    PlatformTransactionManager transactionManager(DataSource datasource) {
+    TransactionManager transactionManager(DataSource datasource) {
         return new DataSourceTransactionManager(datasource);
     }
 
