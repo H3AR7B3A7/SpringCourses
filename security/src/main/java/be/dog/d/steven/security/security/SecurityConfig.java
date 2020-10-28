@@ -29,6 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/css/*", "/js/*")
                 .permitAll()
+                .antMatchers("/api/**")
+                .hasRole(STUDENT.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -47,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .build();
         UserDetails student = User.builder()
                 .username("student")
-                .password("student")
+                .password(passwordEncoder.encode("student"))
                 .roles(STUDENT.name())
                 .build();
 
