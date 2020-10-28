@@ -18,13 +18,23 @@ public class DataSourceConfiguration {
     @ConfigurationProperties("db1.datasource")
     @Primary
     public DataSource dataSource(){
-        return DataSourceBuilder.create().build();
+        return DataSourceBuilder.create()
+                .driverClassName("com.mysql.cj.jdbc.Driver")
+                .url("jdbc:mysql://localhost:3306/my_database3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+                .username("admin")
+                .password("admin")
+                .build();
     }
 
     @Bean(name = "datasource2")
     @ConfigurationProperties("db2.datasource")
     public DataSource dataSource2(){
-        return DataSourceBuilder.create().build();
+        return DataSourceBuilder.create()
+                .driverClassName("com.mysql.cj.jdbc.Driver")
+                .url("jdbc:mysql://localhost:3306/my_database4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+                .username("admin")
+                .password("admin")
+                .build();
     }
 
     @Bean(name="tm1")
