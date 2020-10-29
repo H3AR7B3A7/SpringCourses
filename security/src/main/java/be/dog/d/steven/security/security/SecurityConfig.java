@@ -3,7 +3,7 @@ package be.dog.d.steven.security.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -12,12 +12,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import static be.dog.d.steven.security.security.UserPermission.*;
 import static be.dog.d.steven.security.security.UserRole.*;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -28,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Basic authentication (always authenticate, no Spring mapping) with whitelisting:
         http
-                .csrf().disable() // Disables api integrity protection
+//                .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/css/*", "/js/*")
                 .permitAll()
@@ -37,18 +38,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Either use COURSE_READ or role for GET methods
 //                .antMatchers(HttpMethod.GET,"/admin/api/**")
 //                .hasAuthority(COURSE_READ.name())
-                .antMatchers(HttpMethod.GET,"/admin/api/**")
-                .hasAnyRole(ADMIN.name(), PROFESSOR.name())
-                .antMatchers(HttpMethod.POST,"/admin/api/**")
-                .hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.DELETE,"/admin/api/**")
-                .hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT,"/admin/api/**")
-                .hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers(HttpMethod.GET,"/admin/api/**") // Order matters if Method not defined
+//                .hasAnyRole(ADMIN.name(), PROFESSOR.name())
+//                .antMatchers(HttpMethod.POST,"/admin/api/**")
+//                .hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers(HttpMethod.DELETE,"/admin/api/**")
+//                .hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers(HttpMethod.PUT,"/admin/api/**")
+//                .hasAuthority(COURSE_WRITE.getPermission())
                 .anyRequest()
                 .authenticated()
                 .and()
                 .httpBasic();
+
+        // To generate tokens in local environment:
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
     @Override
