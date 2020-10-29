@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.concurrent.TimeUnit;
+
 import static be.dog.d.steven.security.security.UserRole.*;
 
 @Configuration
@@ -58,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/css/*", "/js/*")
+                .antMatchers("/", "/index", "/goodbye", "/css/*", "/js/*")
                 .permitAll()
                 .antMatchers("/api/**")
                 .hasRole(STUDENT.name())
@@ -72,7 +74,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/courses", true)
 
                 .and()
-                .rememberMe(); // Defaults to 2 weeks
+                .rememberMe() // Defaults to 2 weeks
+                .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30))
+
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID", "remember-me")
+                .logoutSuccessUrl("/goodbye");
     }
 
 

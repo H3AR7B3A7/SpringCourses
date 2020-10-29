@@ -18,4 +18,8 @@ public class TemplateController {
         return "courses";
     }
 
+    @GetMapping("/goodbye")
+    public String getGoodbyeView(){
+        return "goodbye";
+    }
 }
