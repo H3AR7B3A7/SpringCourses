@@ -15,6 +15,10 @@ public enum UserRole {
             STUDENT_READ,
             STUDENT_WRITE)),
 
+    PROFESSOR(Sets.newHashSet(
+            COURSE_READ,
+            STUDENT_READ)),
+
     STUDENT(Sets.newHashSet());
 
     private final Set<UserPermission> permissions;

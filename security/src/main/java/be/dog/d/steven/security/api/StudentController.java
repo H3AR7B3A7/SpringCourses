@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("api/v1/students")
 public class StudentController {
 
+    // Fake dao
     private static final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "testStudent1"),
             new Student(2, "testStudent2"),

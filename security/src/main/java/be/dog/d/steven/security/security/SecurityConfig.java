@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Basic authentication (always authenticate, no Spring mapping) with whitelisting:
         http
+                .csrf().disable() // Disables api integrity protection
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/css/*", "/js/*")
                 .permitAll()
@@ -49,6 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder.encode("admin"))
                 .roles(ADMIN.name())
                 .build();
+        UserDetails professor = User.builder()
+                .username("professor")
+                .password(passwordEncoder.encode("professor"))
+                .roles(PROFESSOR.name())
+                .build();
         UserDetails student = User.builder()
                 .username("student")
                 .password(passwordEncoder.encode("student"))
@@ -57,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(
                 admin,
+                professor,
                 student
         );
     }
