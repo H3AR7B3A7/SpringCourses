@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/goodbye", "/css/*", "/js/*")
+                .antMatchers("/", "/index", "/goodbye", "/css/*", "/js/*", "/img/*","/fragments/*")
                 .permitAll()
                 .antMatchers("/api/**")
                 .hasRole(STUDENT.name())
@@ -80,6 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
+                // When csrf is disabled httpMethod is GET by default, when enabled it is a POST
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID", "remember-me")
