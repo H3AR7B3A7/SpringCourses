@@ -68,7 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login") // For custom login page
-                .permitAll();
+                .permitAll()
+                .defaultSuccessUrl("/courses", true);
     }
 
 

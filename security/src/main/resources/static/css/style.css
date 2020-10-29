@@ -33,12 +33,22 @@ h1, h2 {
 .btn:focus {
     background-color: purple;
     outline: 0;
+    outline: purple !important; /* Fixes some spring styling */
+    box-shadow: none;
+}
+
+.no-underline {
+    text-decoration: none !important /* Fixes some spring styling */
 }
 
 .form-signin:last-child, .form-control:last-child {
-    border-radius: .25rem !important; /* Fixes some spring  */
+    border-radius: .25rem !important; /* Fixes some spring styling */
 }
 
 .form-signin:focus, .form-control:focus {
     border-color: rebeccapurple;
+}
+
+.container {
+    width: unset; /* Fixes some bootstrap styling */
 }
