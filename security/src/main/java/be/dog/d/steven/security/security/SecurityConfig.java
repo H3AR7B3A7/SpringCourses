@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import static be.dog.d.steven.security.security.UserRole.*;
 
@@ -26,10 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+/*
         // Basic authentication (always authenticate, no Spring mapping) with whitelisting:
         http
-//                .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
+                .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/css/*", "/js/*")
                 .permitAll()
@@ -52,8 +51,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
 
         // To generate tokens in local environment:
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+//        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+*/
+
+        // Form Based authentication:
+        http
+                .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
+                .authorizeRequests()
+                .antMatchers("/", "/index", "/css/*", "/js/*")
+                .permitAll()
+                .antMatchers("/api/**")
+                .hasRole(STUDENT.name())
+                .anyRequest()
+                .authenticated()
+
+                .and()
+                .formLogin()
+                .loginPage("/login") // For custom login page
+                .permitAll();
     }
+
+
 
     @Override
     @Bean
