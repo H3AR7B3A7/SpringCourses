@@ -19,6 +19,26 @@ body {
     text-align: center;
 }
 
-h1 {
-    color: blue;
+h1, h2 {
+    color: rebeccapurple;
+}
+
+.btn {
+    background-color: rebeccapurple; /* std bootstrap prim btn color: #007BFF, hover: #0069D9 */
+    border: none;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    background-color: purple;
+    outline: 0;
+}
+
+.form-signin:last-child, .form-control:last-child {
+    border-radius: .25rem !important;
+}
+
+.form-signin:focus, .form-control:focus {
+    border-color: rebeccapurple;
 }
