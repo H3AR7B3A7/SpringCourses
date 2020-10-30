@@ -11,10 +11,9 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Qualifier("datasource1")
 public class UserService {
 
-    private final UserDao dao;
+    @Qualifier("datasource1")private final UserDao dao;
 
     @Transactional
     public void addUser(User user){
