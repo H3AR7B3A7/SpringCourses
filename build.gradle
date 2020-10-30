@@ -35,14 +35,26 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+        // Spring Web
         implementation 'org.springframework.boot:spring-boot-starter-web'
+
+        // Thymeleaf templating engine
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+        // Unit Testing
         implementation 'junit:junit:4.12'
+
+        // Lombok
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+
+        // Spring Testing
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         }
+
+        // Devtools
         compileOnly 'org.springframework.boot:spring-boot-devtools'
     }
 
