@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/github/contributors/badges/shields" />
+![AppVeyor](https://img.shields.io/appveyor/build/H3AR7B3A7/SpringCourses?style=plastic)
 
 # SpringCourses
 My exercises and new insights bundled together as I am reviewing previous projects and reading books while learning about best practices using Spring.
