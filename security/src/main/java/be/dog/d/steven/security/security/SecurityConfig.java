@@ -1,8 +1,6 @@
 package be.dog.d.steven.security.security;
 
 import be.dog.d.steven.security.jwt.JwtConfig;
-import be.dog.d.steven.security.jwt.JwtCredentialAuthenticationFilter;
-import be.dog.d.steven.security.jwt.JwtTokenVerifier;
 import be.dog.d.steven.security.security.auth.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -14,10 +12,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.crypto.SecretKey;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableWebSecurity
@@ -68,13 +66,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // For Jwt authentication only
                 // -- Comment this out for FORM authentication --
-
+/*
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtCredentialAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtCredentialAuthenticationFilter.class)
-
+*/
                 // -- Comment this out for FORM authentication --
 
 
@@ -84,11 +82,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/**")
                 .hasRole(UserRole.STUDENT.name())
                 .anyRequest()
-                .authenticated(); // Close with ; when using JWT
+                .authenticated() // Close with ; when using JWT
 
                 // Form based authentication for when no other devices need access
                 // -- Comment this out for JWT authentication --
-/*
+
                 .and()
                 .formLogin()
                 .loginPage("/login") // For custom login page
@@ -108,7 +106,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID", "remember-me")
                 .logoutSuccessUrl("/goodbye");
-*/
+
                 // -- Comment this out for JWT authentication --
 
     }
