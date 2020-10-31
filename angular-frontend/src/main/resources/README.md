@@ -19,7 +19,7 @@ ng new angular-book-client in resources/frontend
 
 ## In command line
 npm run-script start
-npm run-script build (to build project in "/static" folder to run on TomCat)
+npm run-script build (to build angular project in "/static" folder for testing)
 
 ## Edit build.gradle
 task buildFrontend(type: Exec) {
