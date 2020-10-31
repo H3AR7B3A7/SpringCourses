@@ -1,4 +1,4 @@
-![JRE version](https://img.shields.io/badge/jre-11-blue)
+![JRE version](https://img.shields.io/badge/JRE-11-blue)
 ![GitHub last commit](https://img.shields.io/github/last-commit/H3AR7B3A7/SpringCourses)
 
 # SpringCourses
