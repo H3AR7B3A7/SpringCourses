@@ -14,7 +14,7 @@ My exercises and new insights bundled together as I am reviewing previous projec
 - Angular-frontend: A simple example of an Angular frontend connected to a Spring Boot api
 - ...
  
-Next:
+Next up:
 - Testing: A project in which I focus on testing Spring applications
 
 
