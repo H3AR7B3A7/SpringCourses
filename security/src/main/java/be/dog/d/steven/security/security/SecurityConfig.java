@@ -1,7 +1,9 @@
 package be.dog.d.steven.security.security;
 
+import be.dog.d.steven.security.jwt.JwtConfig;
 import be.dog.d.steven.security.security.auth.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,18 +14,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.crypto.SecretKey;
 import java.util.concurrent.TimeUnit;
-
-import static be.dog.d.steven.security.security.UserRole.STUDENT;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
+@EnableConfigurationProperties(JwtConfig.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final SecretKey secretKey;
+    private final JwtConfig jwtConfig;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -56,16 +60,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 */
 
-        // Form Based authentication:
+        // Form Based (single application) / Jwt authentication (multiple platform applications):
         http
                 .csrf().disable() // Cross Site Request Forgery - Tokens disabled for non browser applications or postman
+
+                // For Jwt authentication only
+                // -- Comment this out for FORM authentication --
+/*
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtCredentialAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
+                .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtCredentialAuthenticationFilter.class)
+*/
+                // -- Comment this out for FORM authentication --
+
+
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/goodbye", "/css/*", "/js/*", "/img/*","/fragments/*")
                 .permitAll()
                 .antMatchers("/api/**")
-                .hasRole(STUDENT.name())
+                .hasRole(UserRole.STUDENT.name())
                 .anyRequest()
-                .authenticated()
+                .authenticated() // Close with ; when using JWT
+
+                // Form based authentication for when no other devices need access
+                // -- Comment this out for JWT authentication --
 
                 .and()
                 .formLogin()
@@ -86,6 +106,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID", "remember-me")
                 .logoutSuccessUrl("/goodbye");
+
+                // -- Comment this out for JWT authentication --
+
     }
 
 
