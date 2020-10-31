@@ -1,0 +1,12 @@
+version 'v1.0'
+
+task buildFrontend(type: Exec) {
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine 'cmd', '/c', 'cd src/main/frontend && npm run-script build && xcopy build\\* ..\\resources\\static\\ /Y /E '
+    } else {
+        commandLine 'sh', '-c', 'cd src/main/frontend && npm run-script build && cp -r build/* ../resources/static/'
+    }
+}
+
+build.dependsOn buildFrontend
+bootJar.dependsOn buildFrontend

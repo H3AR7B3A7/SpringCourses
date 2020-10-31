@@ -3,4 +3,5 @@ include 'base-module'
 include 'simple-rest'
 include 'multiple-db'
 include 'security'
+include 'angular-frontend'
 
