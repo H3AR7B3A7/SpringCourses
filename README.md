@@ -1,4 +1,5 @@
-<img src="https://img.shields.io/badge/jre-11-blue">
+![JRE version](https://img.shields.io/badge/jre-11-blue)
+![GitHub last commit](https://img.shields.io/github/last-commit/H3AR7B3A7/SpringCourses)
 
 # SpringCourses
 My exercises and new insights bundled together as I am reviewing previous projects and reading books while learning about best practices using Spring.
