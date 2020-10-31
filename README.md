@@ -12,6 +12,7 @@ My exercises and new insights bundled together as I am reviewing previous projec
 - Security: An application implementing Spring Security for web-api or multi-platform api (JWT)
     - The projects holds 2 branches to switch between both of these
 - Angular-frontend: A simple example of an Angular frontend connected to a Spring Boot api
+...
  
 Next:
 - Testing: A project in which I focus on testing Spring applications
