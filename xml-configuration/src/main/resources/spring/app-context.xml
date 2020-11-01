@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--  ATTRIBUTE NOTATION  -->
+<!--  PROPERTIES NOTATION  -->
     <bean id="empRec1" class="be.dog.d.steven.xmlconfiguration.model.Employee">
         <property name="first" value="Steven"/>
         <property name="last" value="D'Hondt"/>
