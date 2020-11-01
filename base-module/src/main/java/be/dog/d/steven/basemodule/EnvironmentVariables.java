@@ -13,10 +13,10 @@ import java.util.Map;
 public class EnvironmentVariables implements CommandLineRunner {
 
     @Value("${COMPUTERNAME}")
-    String name;
+    private String name;
 
     @Value("${computer-name}")
-    String name2;
+    private String name2;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -33,5 +33,4 @@ public class EnvironmentVariables implements CommandLineRunner {
         System.out.println("From application.properties @Value name2 : " + name2);
         logger.info("From System @Value name: {}", name);
     }
-
 }
