@@ -6,7 +6,7 @@ My exercises and new insights bundled together as I am reviewing previous projec
 
 ## Contains multiple projects
 
-- Base-module: Hello world application just for testing the project structure
+- Base-module: Testing project structure & fetching environment variables in different ways
 - Simple-rest: A simple example rest service application with service tests
 - Multi-db: An application linking to 2 different databases that can be easily switched out
 - Security: An application implementing Spring Security for web-api or multi-platform api (JWT)
