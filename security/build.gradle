@@ -1,6 +1,7 @@
 version 'v1.0'
 
 dependencies {
+
     // Spring Security
     compile 'org.springframework.boot:spring-boot-starter-security'
 
@@ -19,4 +20,8 @@ dependencies {
 
     // Annotation configuration processor
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // Thymeleaf templating engine
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 }

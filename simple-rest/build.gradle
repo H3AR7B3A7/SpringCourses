@@ -1,6 +1,14 @@
 version 'v1.0'
 
 dependencies {
+
+    // Java persistence API
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // MySQL connector
     runtimeOnly 'mysql:mysql-connector-java'
+
+    // Thymeleaf templating engine
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 }
