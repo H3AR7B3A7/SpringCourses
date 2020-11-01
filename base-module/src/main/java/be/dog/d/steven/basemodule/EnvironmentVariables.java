@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Map;
 
 @SpringBootApplication
-@org.springframework.context.annotation.PropertySource("classpath:application.properties")
 public class EnvironmentVariables implements CommandLineRunner {
 
     @Value("${COMPUTERNAME}")
