@@ -13,8 +13,8 @@ public class XmlConfiguration {
 
         SpringApplication.run(XmlConfiguration.class, args);
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/app-context.xml");
-
         System.out.println("app-context loaded...");
+
         System.out.println("empRec1:");
         Employee empRec1 = (Employee) context.getBean("empRec1");
         System.out.printf("%s %s%n", empRec1.getFirst(), empRec1.getLast());
