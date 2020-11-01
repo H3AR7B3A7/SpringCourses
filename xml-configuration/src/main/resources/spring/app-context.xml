@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  ATTRIBUTE NOTATION  -->
+    <bean id="empRec1" class="be.dog.d.steven.xmlconfiguration.model.Employee">
+        <property name="first" value="Steven"/>
+        <property name="last" value="D'Hondt"/>
+        <property name="birthDate" value="June 15, 1989"/>
+        <property name="position" value="programmer"/>
+        <property name="salary" value="99999"/>
+        <property name="department" ref="dept1"/>
+    </bean>
+    <bean id="dept1" class="be.dog.d.steven.xmlconfiguration.model.Department">
+        <property name="departmentNumber" value="1"/>
+        <property name="departmentName" value="finances"/>
+    </bean>
+
+<!--  CONSTRUCTOR ARGUMENTS NOTATION  -->
+    <bean id="empRec2" class="be.dog.d.steven.xmlconfiguration.model.Employee">
+        <constructor-arg value="John"/>
+        <constructor-arg value="Doe"/>
+        <constructor-arg value="January 1, 2000"/>
+        <constructor-arg value="45000"/>
+        <constructor-arg value="programmer"/>
+        <constructor-arg ref="dept2"/>
+    </bean>
+    <bean id="dept2" class="be.dog.d.steven.xmlconfiguration.model.Department">
+        <constructor-arg value="2"/>
+        <constructor-arg value="production"/>
+    </bean>
+</beans>
