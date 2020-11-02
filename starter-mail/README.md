@@ -1,4 +1,5 @@
 # Configuration for other 'real' smtp
+For this project I generated a fake one at: https://mailtrap.io/
 
 ## Gmail
 application.properties:
