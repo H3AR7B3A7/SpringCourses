@@ -39,13 +39,20 @@ h1, h2 {
     box-shadow: none;
 }
 
-input {
+input, textarea {
+    text-align: center;
     width: 20rem;
     border-radius: .25rem;
     border: 1px solid rebeccapurple;
 }
 
+input:focus, textarea:focus {
+    outline: none;
+}
+
 #message {
+    padding-top: .25rem;
+    vertical-align: top; !important;
     height: 10rem;
 }
 
