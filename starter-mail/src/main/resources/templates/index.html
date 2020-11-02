@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Mail</title>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link th:href="@{https://getbootstrap.com/docs/4.0/examples/signin/signin.css}" rel="stylesheet"
+          crossorigin="anonymous">
+    <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{js/index.js}" defer type="text/javascript"></script>
+    <link rel="icon" th:href="@{img/favicon.png}" type="image/x-icon">
+</head>
+<body>
+<div class="container">
+    <h1>Mail</h1>
+    <form action="#" th:action="@{/}" th:object="${mail}" method="post">
+        <p>
+        <label for="name"> Name:
+            <input id="name" type="text" th:field="*{name}"/>
+        </label>
+        </p>
+        <p>
+        <label for="email" > Email:
+            <input id="email" type="text" th:field="*{email}"/>
+        </label>
+        </p>
+        <p>
+        <label for="message"> Message:
+            <input id="message" type="text" th:field="*{body}"/>
+        </label>
+        </p>
+        <input class="btn" type="submit" value="Send"/>
+    </form>
+</div>
+</body>
+</html>

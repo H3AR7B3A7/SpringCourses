@@ -1,24 +1,24 @@
-package be.dog.d.steven.startermail.mail;
+package be.dog.d.steven.startermail.api;
 
+import be.dog.d.steven.startermail.mail.Mail;
+import be.dog.d.steven.startermail.mail.MailConfiguration;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.ValidationException;
 
 @RestController
-@RequestMapping("/mail")
 @AllArgsConstructor
-public class MailController {
+public class MailApiController {
 
     private final MailConfiguration mailConfiguration;
 
-    @PostMapping
+    @PostMapping("/api/v1/mail")
     public void sendMail(@RequestBody Mail mail, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new ValidationException("Mail is not valid");

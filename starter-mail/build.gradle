@@ -5,4 +5,7 @@ dependencies {
     // Starter mail
     compile 'org.springframework.boot:spring-boot-starter-mail'
 
+    // Thymeleaf templating engine
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 }
