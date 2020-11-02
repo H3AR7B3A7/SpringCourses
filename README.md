@@ -11,8 +11,9 @@ My exercises and new insights bundled together as I am reviewing previous projec
 - Multi-db: An application linking to 2 different databases that can be easily switched out
 - Security: An application implementing Spring Security for web-api or multi-platform api (JWT)
     - The project holds 2 branches to switch between both of these
-- Angular-frontend: A simple example of an Angular frontend connected to a Spring Boot api
-- Xml-configuration: A small project to get more familiar with the configuration of beans using XML instead of JavaConfig
+- Angular-frontend: An example of an Angular frontend connected to a Spring Boot api
+- Xml-configuration: A project to get more familiar with the configuration of beans using XML instead of JavaConfig
+- Starter-mail: An example of how to set up a mail-service with Spring Boot (, mailtrap.io is used for testing)
 - ...
  
 Next up:
