@@ -1,0 +1,8 @@
+version 'v1.0'
+
+dependencies {
+
+    // Starter mail
+    compile 'org.springframework.boot:spring-boot-starter-mail'
+
+}
