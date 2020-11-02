@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StarterMail {
 
     public static void main(String[] args) {
-        SpringApplication.run(StarterMail.class, args);
 
+        SpringApplication.run(StarterMail.class, args);
 
     }
 
