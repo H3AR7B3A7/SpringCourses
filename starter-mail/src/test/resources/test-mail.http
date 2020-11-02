@@ -1,0 +1,8 @@
+POST http://localhost:8080/mail
+Content-Type: application/json
+
+{
+  "name" : "Steven",
+  "email" : "steven@mail.com",
+  "body" : "This is a test-mail ..."
+}
