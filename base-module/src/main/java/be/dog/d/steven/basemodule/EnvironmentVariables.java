@@ -18,6 +18,9 @@ public class EnvironmentVariables implements CommandLineRunner {
     @Value("${computer-name}")
     private String name2;
 
+    @Value("${my-secret-variable}")
+    private String secret;
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public static void main(String[] args) {
@@ -32,5 +35,6 @@ public class EnvironmentVariables implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("From application.properties @Value name2 : " + name2);
         logger.info("From System @Value name: {}", name);
+        System.out.println(secret);
     }
 }
