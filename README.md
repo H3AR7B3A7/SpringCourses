@@ -7,7 +7,7 @@ My exercises and new insights bundled together as I am reviewing previous projec
 ## Contains multiple projects
 
 - Base-module: Testing project structure, logger & fetching of environment variables in different ways
-- Simple-rest: A simple example rest service application with service tests
+- Simple-rest: A simple example rest service application connecting to a mySQL database (with service tests).
 - Multi-db: An application linking to 2 different databases that can be easily switched out
 - Security: An application implementing Spring Security for web-api or multi-platform api (JWT)
     - The project holds 2 branches to switch between both of these
