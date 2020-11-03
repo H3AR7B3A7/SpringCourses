@@ -14,12 +14,12 @@ public class XmlConfiguration {
     public static void main(String[] args) {
 
         SpringApplication.run(XmlConfiguration.class, args);
-        ApplicationContext xml_context = new ClassPathXmlApplicationContext("spring/app-context.xml");
-        System.out.println("app-xml_context loaded...");
 
         /**
          * XML configuration
          */
+        ApplicationContext xml_context = new ClassPathXmlApplicationContext("spring/app-context.xml");
+        System.out.println("app-context: XML loaded...");
 
         System.out.println("empRec1:");
         Employee empRec1 = (Employee) xml_context.getBean("empRec1");
@@ -36,13 +36,13 @@ public class XmlConfiguration {
         System.out.println(empRec2.getSalary());
 
 
-        AnnotationConfigApplicationContext annotation_context = new AnnotationConfigApplicationContext();
-        annotation_context.register(BeanConfig.class);
-        annotation_context.refresh();
-
         /**
          * JavaConfig
          */
+        AnnotationConfigApplicationContext annotation_context = new AnnotationConfigApplicationContext();
+        annotation_context.register(BeanConfig.class);
+        annotation_context.refresh();
+        System.out.println("app-context: JavaConfig loaded...");
 
         System.out.println("empRec3:");
         Employee empRec3 = (Employee) annotation_context.getBean("empRec3");
