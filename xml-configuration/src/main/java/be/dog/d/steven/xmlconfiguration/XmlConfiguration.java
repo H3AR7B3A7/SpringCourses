@@ -57,6 +57,8 @@ public class XmlConfiguration {
         System.out.printf("%s, %s%n", empRec4.getPosition() ,empRec4.getDepartment().getDepartmentName());
         System.out.println(empRec4.getBirthDate());
         System.out.println(empRec4.getSalary());
+
+        annotation_context.registerShutdownHook();
     }
 
 }
