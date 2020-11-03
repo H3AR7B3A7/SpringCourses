@@ -24,14 +24,14 @@ public class XmlConfiguration {
         System.out.println("empRec1:");
         Employee empRec1 = (Employee) xml_context.getBean("empRec1");
         System.out.printf("%s %s%n", empRec1.getFirst(), empRec1.getLast());
-        System.out.println(empRec1.getDepartment().getDepartmentName());
+        System.out.printf("%s, %s%n", empRec1.getPosition() ,empRec1.getDepartment().getDepartmentName());
         System.out.println(empRec1.getBirthDate());
         System.out.println(empRec1.getSalary());
 
         System.out.println("empRec2:");
         Employee empRec2 = (Employee) xml_context.getBean("empRec2");
         System.out.printf("%s %s%n", empRec2.getFirst(), empRec2.getLast());
-        System.out.println(empRec2.getDepartment().getDepartmentName());
+        System.out.printf("%s, %s%n", empRec2.getPosition() ,empRec2.getDepartment().getDepartmentName());
         System.out.println(empRec2.getBirthDate());
         System.out.println(empRec2.getSalary());
 
@@ -47,7 +47,7 @@ public class XmlConfiguration {
         System.out.println("empRec3:");
         Employee empRec3 = (Employee) annotation_context.getBean("empRec3");
         System.out.printf("%s %s%n", empRec3.getFirst(), empRec3.getLast());
-        System.out.println(empRec3.getDepartment().getDepartmentName());
+        System.out.printf("%s, %s%n", empRec3.getPosition() ,empRec3.getDepartment().getDepartmentName());
         System.out.println(empRec3.getBirthDate());
         System.out.println(empRec3.getSalary());
     }
