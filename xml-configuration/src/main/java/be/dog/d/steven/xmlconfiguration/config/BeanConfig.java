@@ -11,7 +11,7 @@ import java.util.Calendar;
 public class BeanConfig {
 
     @Bean(name="empRec3")
-    public Employee getEmployee(){
+    public Employee getEmpRecord2(){
 
         Employee empRec3 = new Employee();
         empRec3.setFirst("Jane");
@@ -35,4 +35,16 @@ public class BeanConfig {
 
         return dept3;
     }
+
+    @Bean(name="empRec4")
+    public Employee getEmpRecord4(){
+        Calendar date = Calendar.getInstance();
+        date.set(1962,Calendar.OCTOBER,10);
+        return new Employee("James","Bond",date.getTime(),99999.0,"spy",getDept4());
+    }
+    @Bean(name="dept4")
+    public Department getDept4(){
+        return new Department(4,"intelligence");
+    }
+
 }

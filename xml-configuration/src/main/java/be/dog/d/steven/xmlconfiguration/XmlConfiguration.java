@@ -50,6 +50,13 @@ public class XmlConfiguration {
         System.out.printf("%s, %s%n", empRec3.getPosition() ,empRec3.getDepartment().getDepartmentName());
         System.out.println(empRec3.getBirthDate());
         System.out.println(empRec3.getSalary());
+
+        System.out.println("empRec4:");
+        Employee empRec4 = (Employee) annotation_context.getBean("empRec4");
+        System.out.printf("%s %s%n", empRec4.getFirst(), empRec4.getLast());
+        System.out.printf("%s, %s%n", empRec4.getPosition() ,empRec4.getDepartment().getDepartmentName());
+        System.out.println(empRec4.getBirthDate());
+        System.out.println(empRec4.getSalary());
     }
 
 }
